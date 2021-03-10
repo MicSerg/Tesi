@@ -20,4 +20,5 @@ Il processo di estrazione è formato dalle seguenti fasi:
 
 ### Tools
 
-scripts/reviewsOperations.py: contiene lo script py con tutte le operazioni di preprocessing.
+### scripts/reviewsOperations.py:
+    contiene lo script py con tutte le operazioni di preprocessing.
