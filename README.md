@@ -5,6 +5,8 @@ Dataset -> https://doi.org/10.5281/zenodo.3653367
 Il Dataset è composto da metadati delle app estratti settimanalmente, per 4 differenti Paesi, durante 30 settimane.
 Di queste 30 settimane, ho preso in esame la settimana con più recensioni -> 5-11, 12-11.
 
+Il Dataset è stato analizzato con la libreria python Pandas -> https://pandas.pydata.org/
+
 Il processo di estrazione è formato dalle seguenti fasi:
   
    1. Preprocessing delle reviews all'interno della collection reviews:
