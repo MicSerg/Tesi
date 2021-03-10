@@ -8,7 +8,7 @@ Di queste 30 settimane, ho preso in esame la settimana con più recensioni -> 5-
 Il processo di estrazione è formato dalle seguenti fasi:
   
    1. Preprocessing delle reviews all'interno della collection reviews:
-      *  #Misspelt Words:# libreria python -> https://github.com/fsondej/autocorrect
+      *  # Misspelt Words: # libreria python -> https://github.com/fsondej/autocorrect
          **  Controllo ortografico su tutte le recensioni, la libreria utilizzata implementa l'algortimo della distanza di Levenshtein.
       
       *  #Stopwords Removal and Stemming:# libreria python -> https://www.nltk.org/
