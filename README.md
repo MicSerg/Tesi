@@ -19,6 +19,7 @@ Il processo di estrazione è formato dalle seguenti fasi:
             
       *  ### Sentiment Analysis: libreria python -> https://github.com/cjhutto/vaderSentiment
          Infine, le reviews sono state sottoposte all'analisi del sentimento con il filtro Vader.
+         L'analisi è basata sull'indice Compound, se quest'ultimo è <= -0.050, il sentimento risulterà Negativo; mentre nel caso opposto risulterà Positivo.
 
 ### Tools
 
