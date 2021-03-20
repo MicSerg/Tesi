@@ -3,3 +3,6 @@
     
 ## recensioniRangeProcessed.csv:
     File .csv analogo al file recensioniRange.csv, con l'aggiunta della colonna "processed_text", ossia le recensioni ottenute dalla fase di preprocessing. E la colonna "vader_sentiment", ossia l'analisi del sentimento su tutte le recensioni.
+
+## rangeApps.csv:
+    File .csv contenente tutte le informazioni relative alle apps prese in analisi nella settimana 5/11, 12/11.
