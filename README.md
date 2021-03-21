@@ -29,5 +29,5 @@ Il processo di estrazione è formato dalle seguenti fasi:
     contiene lo script py con tutte le operazioni di preprocessing.
     
 ### scripts/tool.py:
-    Tool parametrizzato che prende in input il criterio di ricerca tra quelli proposti, al momento 'privacy' e 'green'.
+    ** Tool parametrizzato ** che prende in input il criterio di ricerca tra quelli proposti, al momento 'privacy' e 'green'.
     Dopo aver analizzato tutte le recensioni sottoposte alla fase di preprocessing, e aver controllato che le parole chiavi relative al criterio selezionato sono presenti nel testo della recensione; restituisce in output una lista di app.
