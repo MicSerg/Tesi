@@ -1,6 +1,8 @@
 # Tesi di Michele Sergola
 
-Dataset -> https://doi.org/10.5281/zenodo.3653367
+| Resource | DOI |
+|:---:|:---:|
+|Dataset| [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3653367.svg)](https://doi.org/10.5281/zenodo.3653367)|
 
 Il Dataset è composto da metadati delle app estratti settimanalmente, per 4 differenti Paesi, durante 30 settimane.
 Di queste 30 settimane, ho preso in esame la settimana con più recensioni -> 5-11, 12-11.
