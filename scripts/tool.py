@@ -47,7 +47,7 @@ def analyze_filter(selected_list, text):
 
 questions = [
     inquirer.List('criterio',
-                  message="What size do you need?",
+                  message="Scegli il criterio di ricerca del tool tra quelli proposti",
                   carousel=True,
                   choices=['green', 'privacy'],
                   ),
