@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="w-75 m-sm-auto mt-md-5 text-center p-4 ml-5">
+  <div class="card-body">
+    <h4 class="card-title">Michele's PyTool</h4>
+    <p class="card-text">A recommender system for choosing mobile apps according to user’s preferences</p>
+    <a href="{{ url_for('search') }}" class="btn btn-primary">Try!</a>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div>
+    <form method="POST" action="/neighbors" id="knn-form">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Search 10 Neighbors apps</legend>
+            <div class="form-group">
+                <label>Enter App name</label>
+                <input type="text" name="knn" id="knn_name" class="form-control w-75">
+                <button type="submit" class="btn btn-outline-info mt-3" id="knn">Neighbors</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+{% if knn_neighbors %}
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Neighbors</th>
+        <th scope="col">Positive</th>
+        <th scope="col">Negative</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for neighbor in knn_neighbors %}
+    <tr>
+        <td style="color: snow;">{{ neighbor.app_name }}</td>
+        <td style="color: green;">{{ neighbor.pos }}</td>
+        <td style="color: red;">{{ neighbor.neg }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<script>
+$(document).ready(function(){
+    $('#knn').on("click", function(ev){
+        ev.preventDefault();
+        if($('#knn_name').val() != ''){
+            $.ajax({
+            url:"/neighbors",
+            method:"POST",
+            data:$('#knn-form').serialize(),
+                success: function(response, status){
+                    if(status == 'success'){
+                        console.log('success_knn')
+                        return location.reload()
+                    }
+                }
+            });
+        }
+    });
+});
+</script>
+
+{% endblock content %}

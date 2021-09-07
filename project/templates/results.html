@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if values %}
+<div class="alert alert-success" role="alert" style="width: max-content">
+    Tool found {{ values }} apps!
+</div>
+{% endif %}
+
+{% if apps_list %}
+<table class="table table-responsive-sm">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">App Name</th>
+        <th scope="col">Pos</th>
+        <th scope="col">Neg</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for app in apps_list %}
+    <tr>
+        <td style="color: snow;">{{ app.app_name }}</td>
+        <td style="color: green;">{{ app.pos }}</td>
+        <td style="color: red;">{{ app.neg }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock content %}

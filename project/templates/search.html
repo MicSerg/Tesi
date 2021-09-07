@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if hide_form %}
+<div class="content-section m-3" id="search-criteria" style="color: snow; width: max-content;"
+     xmlns="http://www.w3.org/1999/html">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Search in Michele's tool</legend>
+            <div class="form-group">
+                {{ form.criteria.label(class="form-control-label") }}
+
+                {% if form.criteria.errors %}
+                {{ form.criteria(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for errors in form.criteria.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.criteria(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endif %}
+
+{% if values %}
+<div class="container mb-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-success" role="alert" style="width: max-content">
+                Tool found {{ values }} keywords!
+            </div>
+        </div>
+        <div class="col-6">
+            <div>
+                <button type="button" class="btn btn-success float-rigth" data-toggle="modal" data-target="#mymodal">Add
+                    keyword
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if novalues %}
+<div class="alert alert-danger" role="alert" style="width: max-content">
+    {{ novalues }}
+</div>
+{% endif %}
+
+
+{% if keywords_list %}
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Keywords</th>
+        <th scope="col">Option</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for keyword in keywords_list %}
+    <tr style="color: snow;">
+        <th scope="row"></th>
+        <td>{{ keyword }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('remove', keyword=keyword) }}">
+                <button type="submit" class="btn btn-danger" id="remove_keyword">Remove
+                </button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="col-12">
+    <div class="btn-group btn-sm">
+        <label class="m-auto">Save the keywords and search</label>
+        <a href="{{ url_for('results') }}" class="btn btn-outline-primary m-2">Apps</a>
+        <a href="{{ url_for('neighbors') }}" class="btn btn-outline-success m-auto">Neighbors</a>
+    </div>
+</div>
+{% endif %}
+
+<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="mymodal" aria-hidden="true"
+     style="color: black;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add new keyword</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="content-section m-3">
+                <form method="POST" action="/insert" id="insert-form">
+                    <fieldset class="form-group">
+                        <label>Keyword</label>
+                        <input type="text" name="keyword" id="keyword" class="form-control">
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" id="insert">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('#insert').on("click", function(ev){
+        ev.preventDefault();
+        if($('#keyword').val() != ''){
+            $.ajax({
+            url:"/insert",
+            method:"POST",
+            data:$('#insert-form').serialize(),
+                success: function(response, status){
+                    $('#mymodal').modal('hide');
+                    if(status == 'success'){
+                        console.log('success')
+                        return location.reload()
+                    }
+                }
+            });
+        }
+    });
+
+    $('#knn').on("click", function(ev){
+        ev.preventDefault();
+        if($('#knn_name').val() != ''){
+            $.ajax({
+            url:"/neighbors",
+            method:"POST",
+            data:$('#knn-form').serialize(),
+                success: function(response, status){
+                    if(status == 'success'){
+                        console.log('success_knn')
+                    }
+                }
+            });
+        }
+    });
+});
+</script>
+
+{% endblock content %}
